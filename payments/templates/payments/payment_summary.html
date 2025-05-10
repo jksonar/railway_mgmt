@@ -1,0 +1,10 @@
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+
+{% comment %} {% block content %} {% endcomment %}
+<h2>Payment Summary</h2>
+<p>Booking ID: {{ booking.id }}</p>
+<p>Total Amount: ₹{{ amount }}</p>
+
+<a href="{% url 'simulate_payment' booking.id 'success' %}" class="btn btn-success">Simulate Success</a>
+<a href="{% url 'simulate_payment' booking.id 'failure' %}" class="btn btn-danger">Simulate Failure</a>
+{% comment %} {% endblock %} {% endcomment %}

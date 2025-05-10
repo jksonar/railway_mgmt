@@ -1,5 +1,5 @@
-{% extends "base.html" %}
-{% block content %}
+{% comment %} {% extends "base.html" %} {% endcomment %}
+{% comment %} {% block content %} {% endcomment %}
 <h2>Admin Dashboard</h2>
 
 <div>
@@ -15,4 +15,4 @@
         <li>{{ stat.train__name }} — {{ stat.total }} bookings</li>
     {% endfor %}
 </ul>
-{% endblock %}
+{% comment %} {% endblock %} {% endcomment %}
