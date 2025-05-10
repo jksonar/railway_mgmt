@@ -1,0 +1,12 @@
+<h2>Booking Confirmed</h2>
+<p>Booking ID: {{ booking.id }}</p>
+<p>Train: {{ booking.train.name }}</p>
+<p>Schedule: {{ booking.schedule.date }}</p>
+<p>Status: {{ booking.status }}</p>
+<h3>Passengers:</h3>
+<ul>
+    {% for p in booking.passengers.all %}
+        <li>{{ p.name }} - Seat: {{ p.seat.seat_number }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'booking_history' %}">Go to Booking History</a>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seat Layout View</title>
+    <style>
+        .coach {
+            margin-bottom: 40px;
+        }
+
+        .seat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            gap: 10px;
+        }
+
+        .seat {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #999;
+            border-radius: 5px;
+        }
+
+        .available {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .booked {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h2>Seat Layout</h2>
+
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit">Show Layout</button>
+    </form>
+
+    {% if seat_map %}
+        {% for coach_number, seats in seat_map.items %}
+            <div class="coach">
+                <h3>Coach {{ coach_number }}</h3>
+                <div class="seat-grid">
+                    {% for seat in seats %}
+                        <div class="seat {% if seat.status == 'Booked' %}booked{% else %}available{% endif %}">
+                            {{ seat.seat.seat_number }}<br>
+                            <small>{{ seat.status }}</small>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    {% elif form.is_bound %}
+        <p>No seat layout available for the selected schedule and class.</p>
+    {% endif %}
+</body>
+</html>

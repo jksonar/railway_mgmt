@@ -1,0 +1,25 @@
+<h2>Check Seat Availability</h2>
+<form method="get">
+    {{ form.as_p }}
+    <button type="submit">Check</button>
+</form>
+
+{% if availability %}
+    <h3>Available Seats</h3>
+    <table border="1">
+        <tr>
+            <th>Coach</th>
+            <th>Seat Number</th>
+            <th>Status</th>
+        </tr>
+        {% for seat in availability %}
+        <tr>
+            <td>{{ seat.seat.coach.coach_number }} ({{ seat.seat.coach.class_type }})</td>
+            <td>{{ seat.seat.seat_number }}</td>
+            <td>{{ seat.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% elif form.is_bound %}
+    <p>No seats found for this schedule and class.</p>
+{% endif %}

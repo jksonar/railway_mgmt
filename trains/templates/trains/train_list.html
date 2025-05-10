@@ -1,0 +1,8 @@
+<h2>All Trains</h2>
+<ul>
+  {% for train in trains %}
+    <li>{{ train.name }} ({{ train.number }}) - {{ train.source }} to {{ train.destination }}</li>
+  {% empty %}
+    <li>No trains found.</li>
+  {% endfor %}
+</ul>

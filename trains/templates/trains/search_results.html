@@ -1,0 +1,17 @@
+<h2>Search Trains</h2>
+<form method="get">
+  {{ form.as_p }}
+  <button type="submit">Search</button>
+</form>
+
+<h3>Results:</h3>
+<ul>
+  {% for schedule in results %}
+    <li>
+      {{ schedule.train.name }} ({{ schedule.train.number }}) on {{ schedule.date }} <br>
+      Departure: {{ schedule.departure_time }} | Arrival: {{ schedule.arrival_time }}
+    </li>
+  {% empty %}
+    <li>No trains found for your query.</li>
+  {% endfor %}
+</ul>

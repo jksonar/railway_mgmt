@@ -1,0 +1,7 @@
+<h2>User Profile</h2>
+<p><strong>Username:</strong> {{ request.user.username }}</p>
+<p><strong>Email:</strong> {{ request.user.email }}</p>
+<p><strong>Phone:</strong> {{ profile.phone }}</p>
+<p><strong>ID Proof:</strong> {{ profile.id_proof }}</p>
+<p><strong>Role:</strong> {{ profile.role }}</p>
+<a href="{% url 'logout' %}">Logout</a>

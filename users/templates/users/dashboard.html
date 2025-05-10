@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+
+<div>
+    <p><strong>Total Bookings:</strong> {{ total_bookings }}</p>
+    <p><strong>Today's Bookings:</strong> {{ today_bookings }}</p>
+    <p><strong>Cancelled Bookings:</strong> {{ cancelled_bookings }}</p>
+    <p><strong>Total Revenue:</strong> ₹{{ revenue }}</p>
+</div>
+
+<h3>Top 5 Trains by Bookings</h3>
+<ul>
+    {% for stat in train_stats %}
+        <li>{{ stat.train__name }} — {{ stat.total }} bookings</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,18 @@
+<h2>Booking History</h2>
+{% for booking in bookings %}
+    <div>
+        <h4>Booking #{{ booking.id }}</h4>
+        <p>Train: {{ booking.train.name }} | Date: {{ booking.schedule.date }} | Status: {{ booking.status }}</p>
+        <ul>
+        {% for p in booking.passengers.all %}
+            <li>{{ p.name }} (Seat: {{ p.seat.seat_number }})</li>
+        {% endfor %}
+        </ul>
+        {% if booking.status != 'Cancelled' %}
+        <a href="{% url 'cancel_booking' booking.id %}">Cancel Booking</a>
+        {% endif %}
+    </div>
+    <hr>
+{% empty %}
+    <p>No bookings found.</p>
+{% endfor %}

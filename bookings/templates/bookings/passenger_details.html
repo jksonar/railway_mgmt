@@ -1,0 +1,11 @@
+<h2>Enter Passenger Details</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ formset.management_form }}
+    {% for form in formset %}
+        {{ form.as_p }}
+        <hr>
+    {% endfor %}
+    <input type="hidden" name="formset_submitted" value="1">
+    <button type="submit">Confirm Booking</button>
+</form>
